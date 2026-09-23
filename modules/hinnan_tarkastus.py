@@ -1,0 +1,1 @@
+#Tämä file vertaa hinnan asetettuun hintarajaan
