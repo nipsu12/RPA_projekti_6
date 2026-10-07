@@ -4,23 +4,21 @@
 
 
 ##Robotti käynnistyy
-
 ##→ Lukee products.xlsx
 ##→ Löytää esimerkiksi 3 seurattavaa tuotetta
 
+##NITA TEKEE
 ##→ Hakee tuotteen 1 hinnan
    ##Hinta: 89,90 €
    ##Hintaraja: 100 €
    ##✓ Hintaraja alittui
-
 ##→ Hakee tuotteen 2 hinnan
    ##Hinta: 549 €
    ##Hintaraja: 500 €
    ##- Ei ilmoitusta
-
 ##→ Tallentaa uudet hinnat Exceliin
+
 
 ##→ Lähettää sähköpostin:
    ##"Tuote 1 maksaa nyt 89,90 €"
-
 ##→ Robotti valmis
