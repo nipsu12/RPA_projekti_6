@@ -2,15 +2,25 @@
 #modules kansiossa. Täällä vain käytetään
 #from xx import xx komentoja
 
-#tämä on robotin pääohjelma ja käynnistää
-#koko prosessin oikeassa järjestyksessä
 
-#Lukee tuotteet
+##Robotti käynnistyy
 
-#Hakee hinnat verkkosivuilta
+##→ Lukee products.xlsx
+##→ Löytää esimerkiksi 3 seurattavaa tuotetta
 
-#Vertaa hintoja 
+##→ Hakee tuotteen 1 hinnan
+   ##Hinta: 89,90 €
+   ##Hintaraja: 100 €
+   ##✓ Hintaraja alittui
 
-#Tallentaa exceliin
+##→ Hakee tuotteen 2 hinnan
+   ##Hinta: 549 €
+   ##Hintaraja: 500 €
+   ##- Ei ilmoitusta
 
-#Lähettää ilmoituksen jos hinta on alle asetetun MAX rajan
+##→ Tallentaa uudet hinnat Exceliin
+
+##→ Lähettää sähköpostin:
+   ##"Tuote 1 maksaa nyt 89,90 €"
+
+##→ Robotti valmis
