@@ -2,7 +2,7 @@
 #modules kansiossa. Täällä vain käytetään
 #from xx import xx komentoja
 
-
+##NETTE TEKEE
 ##Robotti käynnistyy
 ##→ Lukee products.xlsx
 ##→ Löytää esimerkiksi 3 seurattavaa tuotetta
@@ -18,7 +18,7 @@
    ##- Ei ilmoitusta
 ##→ Tallentaa uudet hinnat Exceliin
 
-
+##SILJA TEKEE
 ##→ Lähettää sähköpostin:
    ##"Tuote 1 maksaa nyt 89,90 €"
 ##→ Robotti valmis
