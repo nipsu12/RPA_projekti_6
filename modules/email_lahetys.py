@@ -5,12 +5,12 @@ import smtplib
 from email.message import EmailMessage
 
 def laheta_sahkoposti(tulokset): 
-    """Lähettää sähköpostin, jos hintaraja alittuu."""
 
-    ilmoitukset = [
-        tulos for tulos in tulokset
-        if tulos["alitti_rajan"]
-    ]
+    ilmoitukset = []
+
+    for tulos in tulokset:
+        if tulos["alitti_rajan"]:
+            ilmoitukset.append(tulos)
 
     if not ilmoitukset:
         print("Ei uusia hintailmoituksia. ")
@@ -20,7 +20,7 @@ def laheta_sahkoposti(tulokset):
     salasana = os.getenv("EMAIL_SOVELLUSSALASANA")
     vastaanottaja = os.getenv("EMAIL_VASTAANOTTAJA")
 
-    if not all([lahettaja, salasana, vastaanottaja]):
+    if not lahettaja or not salasana or not vastaanottaja:
         print("Sähköpostiasetukset puuttuvat.")
         return
 
@@ -37,8 +37,6 @@ def laheta_sahkoposti(tulokset):
             f"{tulos['hinta']:.2f} €\n"
             f"Kauppa: {tulos['kauppa']}\n"
             f"Hintaraja: {tulos['hintaraja']:.2f} €\n\n"
-
-
         )
 
     viesti.set_content(teksti)
