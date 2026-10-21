@@ -1,6 +1,7 @@
 #Tämä file vertaa hinnan asetettuun hintarajaan
 
 from hinnan_haku import hae_kauppojen_hinnat
+from email_lahetys import laheta_sahkoposti
 
 
 def tarkista_hinnat(tuote, hintaraja, hinnat):
@@ -8,10 +9,10 @@ def tarkista_hinnat(tuote, hintaraja, hinnat):
     tulokset = []
 
     for kauppa, hinta in hinnat.items():
-        print(f"\n→ Tarkistetaan {tuote}: {kauppa}")
+        print(f"\nTarkistetaan {tuote}: {kauppa}")
 
         if hinta is None:
-            print("  Hintaa ei saatu haettua.")
+            print("Hintaa ei saatu haettua.")
             continue
 
         alitti_rajan = hinta < hintaraja
@@ -45,8 +46,11 @@ if __name__ == "__main__":
     tuote = "MacBook Air 13 M5"
     hintaraja = 1000.00  # Hintaraja asetettu 1000 euroon
 
-    # 1. Haetaan hinnat ensimmäisestä tiedostosta
+    # Haetaan hinnat ensimmäisestä tiedostosta
     hinnat = hae_kauppojen_hinnat()
 
-    # 2. Tarkistetaan hinnat
+    # Tarkistetaan hinnat
     tulos = tarkista_hinnat(tuote, hintaraja, hinnat)
+
+    #Lähetä säpo
+    laheta_sahkoposti(tulokset)
