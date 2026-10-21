@@ -34,19 +34,17 @@ def hae_hinta(url):
                 "utf-8", errors="ignore"
             )
 
-        # Etsitään esimerkiksi 1 299,00 € tai 1299,00 €
+        # Etsitään esimerkiksi hintoja, jotka voivat olla muodossa "89,90 €" tai "1 299,00 €"
         loyto = re.search(
             r"(\d[\d\s\u00a0.]*,\d{2})\s*(?:&nbsp;|€)",
             html
         )
 
         if loyto:
-            hinta = loyto.group(1)
-            hinta = hinta.replace(" ", "")
-            hinta = hinta.replace("\u00a0", "")
-            hinta = hinta.replace(".", "")
-            hinta = hinta.replace(",", ".")
-            return float(hinta)
+            # Poistetaan kaikki muut merkit paitsi numerot ja pilkku,
+            # -> muutetaan pilkku pisteeksi float-muunnosta varten.
+            puhdas_hinta = re.sub(r"[^\d,]", "", loyto.group(1)).replace(",", ".")
+            return float(puhdas_hinta)
 
         print("Hintaa ei löytynyt sivulta.")
         return None
@@ -58,7 +56,6 @@ def hae_hinta(url):
 
 def hae_kauppojen_hinnat():
     """Palauttaa molempien kauppojen hinnat sanakirjana."""
-
     hinnat = {}
 
     for kauppa, url in KAUPAT.items():
