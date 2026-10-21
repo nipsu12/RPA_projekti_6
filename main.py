@@ -17,9 +17,11 @@
    ##Hintaraja: 500 €
    ##- Ei ilmoitusta
 ##→ Tallentaa uudet hinnat Exceliin
+##Silja
 
 from modules.hinnan_haku import hae_kauppojen_hinnat
 from modules.hinnan_tarkastus import tarkista_hinnat
+from modules.email_lahetys import laheta_sahkoposti
 
 tuote = "MacBook Air M5 13 tuumaa, keskiyö"
 hintaraja = 1000.00
@@ -34,6 +36,10 @@ tulokset = tarkista_hinnat(
 
 print(tulokset)
 
+
+
+laheta_sahkoposti(tulokset)
+print("Robotti valmis!")
 ##SILJA TEKEE
 ##→ Lähettää sähköpostin:
    ##"Tuote 1 maksaa nyt 89,90 €"
