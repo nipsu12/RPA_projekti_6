@@ -2,10 +2,21 @@
 #modules kansiossa. Täällä vain käytetään
 #from xx import xx komentoja
 
+from modules.excel import lue_tuotteet
+
 ##NETTE TEKEE
 ##Robotti käynnistyy
-##→ Lukee products.xlsx
+##→ Lukee tuotteet.xlsx
 ##→ Löytää esimerkiksi 3 seurattavaa tuotetta
+
+print("Robotti käynnistyy!")
+
+tuotteet = lue_tuotteet()
+
+for tuote_excelissa in tuotteet:
+    print("Seurattava tuote:", tuote_excelissa[0])
+    print("Hintaraja:", tuote_excelissa[2], "€")
+
 
 ##NITA TEKEE
 ##→ Hakee tuotteen 1 hinnan
@@ -22,6 +33,7 @@
 from modules.hinnan_haku import hae_kauppojen_hinnat
 from modules.hinnan_tarkastus import tarkista_hinnat
 from modules.email_lahetys import laheta_sahkoposti
+
 
 tuote = "MacBook Air M5 13 tuumaa, keskiyö"
 hintaraja = 1000.00
