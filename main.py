@@ -1,58 +1,34 @@
-#HUOM kaikki toiminnot kirjataan jokaisen omaan osioon
-#modules kansiossa. Täällä vain käytetään
-#from xx import xx komentoja
+# HUOM: Kaikki toiminnot on tehty omiin tiedostoihinsa modules-kansioon.
+# Täällä main.py:ssä vain käytetään niitä from xx import xx -komennoilla.
 
 from modules.excel import lue_tuotteet
-
-##NETTE TEKEE
-##Robotti käynnistyy
-##→ Lukee tuotteet.xlsx
-##→ Löytää esimerkiksi 3 seurattavaa tuotetta
-
-print("Robotti käynnistyy!")
-
-tuotteet = lue_tuotteet()
-
-for tuote_excelissa in tuotteet:
-    print("Seurattava tuote:", tuote_excelissa[0])
-    print("Hintaraja:", tuote_excelissa[2], "€")
-
-
-##NITA TEKEE
-##→ Hakee tuotteen 1 hinnan
-   ##Hinta: 89,90 €
-   ##Hintaraja: 100 €
-   ##✓ Hintaraja alittui
-##→ Hakee tuotteen 2 hinnan
-   ##Hinta: 549 €
-   ##Hintaraja: 500 €
-   ##- Ei ilmoitusta
-##→ Tallentaa uudet hinnat Exceliin
-##Silja
-
 from modules.hinnan_haku import hae_kauppojen_hinnat
 from modules.hinnan_tarkastus import tarkista_hinnat
 from modules.email_lahetys import laheta_sahkoposti
 
+print("Robotti käynnistyy!")
 
-tuote = "MacBook Air M5 13 tuumaa, keskiyö"
-hintaraja = 1000.00
+# 1. NETTE TEKEE: Luetaan tuotteet ja hintarajat Excelistä
+tuotteet = lue_tuotteet()
+kaikki_tulokset = []
 
-hinnat = hae_kauppojen_hinnat()
+# Käydään läpi jokainen Excelistä löytyvä tuote
+for tuote_tieto in tuotteet:
+    tuote_nimi = tuote_tieto[0]   # Tuotteen nimi
+    hintaraja = float(tuote_tieto[2])  # Hintaraja sarakkeesta
 
-tulokset = tarkista_hinnat(
-    tuote,
-    hintaraja,
-    hinnat
-)
+    print(f"\nSeurattava tuote: {tuote_nimi}")
+    print(f"Hintaraja: {hintaraja} €")
 
-print(tulokset)
+    # 2. NITA TEKEE: Haetaan kauppojen hinnat ja tarkistetaan ne hintarajaa vasten
+    hinnat = hae_kauppojen_hinnat()
+    tulokset = tarkista_hinnat(tuote_nimi, hintaraja, hinnat)
+    
+    # Kerätään tämän tuotteen tulokset talteen yhteiseen listaan
+    kaikki_tulokset.extend(tulokset)
 
+# 3. SILJA TEKEE: Lähettää sähköpostin, jos jonkin tuoteen hintaraja alittui
+if kaikki_tulokset:
+    laheta_sahkoposti(kaikki_tulokset)
 
-
-laheta_sahkoposti(tulokset)
-print("Robotti valmis!")
-##SILJA TEKEE
-##→ Lähettää sähköpostin:
-   ##"Tuote 1 maksaa nyt 89,90 €"
-##→ Robotti valmis
+print("\nRobotti valmis!")
