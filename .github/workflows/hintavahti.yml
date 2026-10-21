@@ -1,0 +1,32 @@
+
+name: Hintavahti
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  aja-robotti:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hae projektin koodi
+        uses: actions/checkout@v4
+
+      - name: Asenna Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Asenna kirjastot
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Suorita hinnanseurantarobotti
+        env:
+          EMAIL_LAHETTAJA: ${{ secrets.EMAIL_LAHETTAJA }}
+          EMAIL_SOVELLUSSALASANA: ${{ secrets.EMAIL_SOVELLUSSALASANA }}
+          EMAIL_VASTAANOTTAJA: ${{ secrets.EMAIL_VASTAANOTTAJA }}
+        run: python main.py
