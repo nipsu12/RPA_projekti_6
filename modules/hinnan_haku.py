@@ -3,7 +3,7 @@
 from urllib.request import Request, urlopen
 import re
 
-
+#Määrittelyt verkkosivujen URL-osoitteet
 KAUPAT = {
     "Gigantti": (
         "https://www.gigantti.fi/product/tietokoneet-ja-toimistotarvikkeet/"
@@ -18,10 +18,11 @@ KAUPAT = {
     )
 }
 
-
+#Funktio tuotteen hinnan hakemiseen verkkosivulta
 def hae_hinta(url):
     """Hakee tuotteen hinnan verkkosivun HTML-koodista."""
 
+    #Yritys hakea hintaa verkkosivulta
     try:
         pyynto = Request(
             url,
@@ -42,7 +43,7 @@ def hae_hinta(url):
         if loyto:
             return float(loyto.group(1))
 
-        # Tarkistus JSON-muotoisista hinnoista
+        # Etsintä JSON-muotoisista hinnoista jos tarvitaan
         loyto = re.search(
             r'"price"\s*:\s*([\d.]+)',
             html
@@ -54,11 +55,12 @@ def hae_hinta(url):
         print(f"Hintaa ei löytynyt sivulta: {url}")
         return None
 
+    #Virheilmoitus jos hintaa ei saatu haettua (esim. verkkosivu ei vastaa)
     except Exception as virhe:
         print(f"Hinnan haku epäonnistui: {virhe}")
         return None
 
-
+#Funktiolla haetaan kauppojen hinnat ja palautetaan ne Excel-tiedostoon
 def hae_kauppojen_hinnat():
     """Palauttaa kauppojen hinnat sanakirjana."""
 
