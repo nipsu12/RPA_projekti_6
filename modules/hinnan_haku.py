@@ -33,7 +33,7 @@ def hae_hinta(url):
                 "utf-8", errors="ignore"
             )
 
-        # 1. Etsitään hinta tuotteen metatiedoista.
+        # Tuotteen hinnan etsintä
         loyto = re.search(
             r'<meta\s+property="product:price:amount"\s+content="([\d.]+)"',
             html
@@ -42,7 +42,7 @@ def hae_hinta(url):
         if loyto:
             return float(loyto.group(1))
 
-        # 2. Varahaku JSON-muotoisista tuotetiedoista.
+        # Tarkistus JSON-muotoisista hinnoista
         loyto = re.search(
             r'"price"\s*:\s*([\d.]+)',
             html
