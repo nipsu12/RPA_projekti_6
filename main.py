@@ -27,7 +27,7 @@ for tuote_tieto in tuotteet:
     # Kerätään tämän tuotteen tulokset talteen yhteiseen listaan
     kaikki_tulokset.extend(tulokset)
 
-# Lähettää sähköpostin hintatuloksen perusteella 
+# 3. SILJA TEKEE: Lähettää sähköpostin hintatuloksen perusteella 
 if kaikki_tulokset:
     laheta_sahkoposti(kaikki_tulokset)
 
