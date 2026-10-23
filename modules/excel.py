@@ -9,3 +9,4 @@ def lue_tuotteet():
             tuotteet.append(rivi)
 
     return tuotteet
+
