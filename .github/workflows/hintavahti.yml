@@ -1,4 +1,4 @@
-
+# Tämä tiedosto määrittelee, milloin ja miten robotti käynnistetään GitHub Actions -työnkulussa.
 name: Hintavahti
 
 on:

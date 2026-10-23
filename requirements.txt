@@ -1,1 +1,2 @@
+# Tämän avulla robotti voi käsitellä Excel-tiedostoa
 openpyxl

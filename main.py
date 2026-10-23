@@ -27,7 +27,7 @@ for tuote_tieto in tuotteet:
     # Kerätään tämän tuotteen tulokset talteen yhteiseen listaan
     kaikki_tulokset.extend(tulokset)
 
-# 3. SILJA TEKEE: Lähettää sähköpostin, jos jonkin tuoteen hintaraja alittui
+# Lähettää sähköpostin hintatuloksen perusteella 
 if kaikki_tulokset:
     laheta_sahkoposti(kaikki_tulokset)
 
