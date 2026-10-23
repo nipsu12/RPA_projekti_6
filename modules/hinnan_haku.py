@@ -7,15 +7,10 @@ import re
 
 KAUPAT = {
     "Gigantti": (
-        "https://www.gigantti.fi/product/tietokoneet-ja-toimistotarvikkeet/"
-        "tietokoneet/kannettavat-tietokoneet/"
-        "macbook-air-13-m5-16512gb-keskiyo/1056068"
+        "https://www.gigantti.fi/product/tietokoneet-ja-toimistotarvikkeet/tietokoneet/kannettavat-tietokoneet/macbook-air-13-m5-16512gb-keskiyo/1056068?qid=a33f187d3ef1fe52e247bbf238fb82b2"
     ),
     "Power": (
-        "https://www.power.fi/tietotekniikka/tietokoneet/"
-        "kannettavat-tietokoneet/"
-        "apple-macbook-air-13-2026-m5-16512-gt-keskiyo/"
-        "p-4253519/o-1217023/"
+        "https://www.power.fi/tietotekniikka/tietokoneet/kannettavat-tietokoneet/apple-macbook-air-13-2026-m5-16512-gt-keskiyo/p-4253519/?q=apple-macbook-air-13-2026-m5-16512-gt-keskiyo"
     )
 }
 
