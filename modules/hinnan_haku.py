@@ -29,6 +29,9 @@ def hae_hinta(url):
                 "utf-8", errors="ignore"
             )
 
+        # TESTI: tulostetaan HTML:n ensimmäiset 1000 merkkiä
+        print(html[:1000])
+
         # Etsitään esimerkiksi hintoja, jotka voivat olla muodossa "89,90 €" tai "1 299,00 €"
         loyto = re.search(
             r"(\d[\d\s\u00a0.]*,\d{2})\s*(?:&nbsp;|€)",
