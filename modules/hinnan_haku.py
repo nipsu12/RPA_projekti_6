@@ -32,6 +32,13 @@ def hae_hinta(url):
         # TESTI: tulostetaan HTML:n ensimmäiset 1000 merkkiä
         print(html[:1000])
 
+                # Etsitään HTML:stä kaikki kohdat, joissa mainitaan hinta
+        for osuma in re.finditer(
+            r"(?i).{0,80}(?:price|hinta|1499|1500).{0,120}",
+            html
+        ):
+            print("MAHDOLLINEN HINTAKOHTA:", osuma.group(0))
+
         # Etsitään esimerkiksi hintoja, jotka voivat olla muodossa "89,90 €" tai "1 299,00 €"
         loyto = re.search(
             r"(\d[\d\s\u00a0.]*,\d{2})\s*(?:&nbsp;|€)",
