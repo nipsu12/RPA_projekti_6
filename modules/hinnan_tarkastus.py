@@ -6,7 +6,7 @@ def tarkista_hinnat(tuote, hintaraja, hinnat):
         print(f"\nTarkistetaan {tuote}: {kauppa}")
 
         if hinta is None:
-            print("  Hintaa ei saatu haettua.")
+            print("Hintaa ei saatu haettua.")
             continue
 
         alitti_rajan = hinta < hintaraja
@@ -16,10 +16,10 @@ def tarkista_hinnat(tuote, hintaraja, hinnat):
 
         if alitti_rajan:
             ilmoitus = "Hintaraja alittui"
-            print("  ✓ Hintaraja alittui")
+            print("Hintaraja alittui")
         else:
             ilmoitus = "Ei ilmoitusta"
-            print("  - Ei ilmoitusta")
+            print("Ei ilmoitusta")
 
         tulokset.append(
             {
